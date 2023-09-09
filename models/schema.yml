@@ -1,0 +1,29 @@
+version : 2
+
+models:
+  - name: dim_hosts
+    description: "les hotes"
+    columns:
+      - name: host_id
+        tests:
+          - unique
+          - not_null
+      - name: host_name
+        tests:
+          - not_null
+  - name: dim_listings
+    description: "la liste des annonces"
+    columns:
+      - name: listing_id
+        tests:
+          - unique
+          - not_null
+      - name: host_id
+        tests:
+          - not_null
+
+sources:
+  - name: raw_data
+    database: airbnb
+    schema: staging
+    
